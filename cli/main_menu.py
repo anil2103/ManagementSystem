@@ -1,4 +1,4 @@
-from cli.employee_menu import employeeSignup
+from cli.employee_menu import employeeSignup,employeeLogin
 
 def menu():
     while True:
@@ -12,6 +12,6 @@ def menu():
         elif choice == 2:
             employeeSignup()
         elif choice ==3 :
-            pass
+            employeeLogin()
         else:
             print('enter a valid number:')
