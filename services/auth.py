@@ -1,12 +1,15 @@
 #module for login & signup for employee and admin
 
 class AdminAuthentication:
-    def adminlogin(self):
-        pass
+    def __init__(self,db,mgr_id):
+        self.db = db
+        self.mgr_db = mgr_id
+    
 
 class EmployeeAuthentication:
     def __init__(self,db):
         self.db = db
+        
 
     def createEmployee(self,e_name,e_email,password):
     

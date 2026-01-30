@@ -1,4 +1,8 @@
 from cli.employee_menu import employeeSignup,employeeLogin
+from cli.admin_menu import adminLogin
+from repositories.employee_repo import EmployeeDB
+
+emp_db = EmployeeDB()
 
 def menu():
     while True:
@@ -8,7 +12,7 @@ def menu():
               press 3 for employee login''')
         choice=int(input('Enter your option:'))
         if choice ==1:
-            pass
+            adminLogin()
         elif choice == 2:
             employeeSignup()
         elif choice ==3 :

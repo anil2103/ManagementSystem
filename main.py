@@ -6,4 +6,16 @@ def main():
 if __name__ == '__main__':
     main()
     print("hii")
-    # print("hello")
+  
+
+
+
+
+
+
+
+# github 
+#git add .
+#git commit -m "any msg"
+#git push origin master
+#git pull origin master

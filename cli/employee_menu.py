@@ -15,28 +15,42 @@ def employeeSignup():
     print('Employee Signup')
     name = input('enter your name:')
     email = input('enter your email:')
-    if email_vali(email=email) is not None:
-        password = getpass('enter your password:')
-        if password_vali(password):
-            password = password_hasher(password)
-            emp_auth.createEmployee(name,email,password)
-        else:
-            print('''password is not valid
+    verify_email = emp_db.searchEmp(email)
+    if verify_email is None:
+        if email_vali(email=email) is not None:
+            password = getpass('enter your password:')
+            confirm_pw =getpass('enter your password again:')
+            if password == confirm_pw:
+                if password_vali(password):
+                    password = password_hasher(password)
+                    emp_auth.createEmployee(name,email,password)
+                else:
+                    print('''password is not valid
                   password should minimum length of 5
                   password should contain uppercase characters ex: A B C.....
                   password should contain special characters ex: ! @ # $.....
                   password should contain digits ex: 1 2 3.....''')
+                    employeeSignup()
+            else:
+                print('password and confirm_pw both are not same')
+                employeeSignup()        
+        else:
+            print(''' email id is not valid !!!!!!''')
             employeeSignup()
     else:
-        print(''' email id is not valid !!!!!!''')
-        employeeSignup()
-
+        print(f'account with thisemail id {email} is already exist.login')
+        employeeLogin
 def employeeLogin():
     print('employee Login')
     email = input('enter your email id:')
     password = getpass('enter your password:')
-    hashed_pw = emp_auth.empLogin(email)
+    data = emp_auth.empLogin(email)
+    hashed_pw = data[3]
+    is_manager = data[5]
     if check_password(password,hashed_pw):
-        print('login successful')
+        if is_manager == 1:
+            print('manager login successfull !!!')
+        else:
+            print('employee login successfull')
     else:
         print('login failed')
