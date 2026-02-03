@@ -4,6 +4,7 @@ from validation.email_validator import email_vali
 from validation.pass_validator import password_vali
 from getpass4 import getpass
 from utils.pass_hash import password_hasher,check_password
+from .manager_menu import managerMainMenu
 
 #This function is for employee repo
 emp_db = EmployeeDB()
@@ -50,6 +51,7 @@ def employeeLogin():
     if check_password(password,hashed_pw):
         if is_manager == 1:
             print('manager login successfull !!!')
+            managerMainMenu(data[0])
         else:
             print('employee login successfull')
     else:

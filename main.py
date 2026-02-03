@@ -19,3 +19,5 @@ if __name__ == '__main__':
 #git commit -m "any msg"
 #git push origin master
 #git pull origin master
+
+#.venv\scripts\activate

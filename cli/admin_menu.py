@@ -4,10 +4,13 @@ import os
 from services.auth import AdminAuthentication
 from repositories.employee_repo import EmployeeDB
 from repositories.manager_repo import ManagerDB
+from repositories.request_repo import RequestDB
+from services import admin_services
 
 emp_db = EmployeeDB()
 mgr_db = ManagerDB()
-admin_auth = AdminAuthentication(emp_db,mgr_db)
+req_db = RequestDB()
+admin_auth = AdminAuthentication(emp_db,mgr_db,req_db)
 
 load_dotenv()
 
@@ -50,7 +53,7 @@ ________________________________________________________
 |press 6 for assign employee to manager                 |
 |press 7 for update the project                         |
 |press 8 for logout                                     |
-_________________________________________________________
+________________________________________________________
             Enter your choice:'''))
 
     if choice == 1:
@@ -80,13 +83,14 @@ ____________________________________|''')
     elif choice == 4:
         pass
     elif choice == 5:
-        pass
+        admin_services.seeMgrReq(admin_auth)
+        adminMainMenu()
     elif choice == 6:
         pass
     elif choice == 7:
         pass
     elif choice == 8:
-        pass
+        return
     else:
-        print('enter correct option:')
+        print('Enter the valid option')
         adminMainMenu()

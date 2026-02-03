@@ -1,9 +1,16 @@
 #module for login & signup for employee and admin
 
 class AdminAuthentication:
-    def __init__(self,db,mgr_id):
+    def __init__(self,db,mgr_id,req_db):
         self.db = db
         self.mgr_db = mgr_id
+        self.req_db = req_db
+
+class ManagerAuthentication:
+    def __init__(self,db,req_db):
+        self.mgr_db = db
+        self.req_db = req_db
+        
     
 
 class EmployeeAuthentication:
